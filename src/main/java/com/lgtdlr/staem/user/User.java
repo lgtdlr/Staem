@@ -7,11 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "user", schema = "public")
+@Table(name = "users", schema = "public")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_generator")
+    @SequenceGenerator(name = "user_generator", sequenceName = "user_id_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "email")
@@ -26,21 +27,18 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
-//    public void setOrders(List<Order> orders) {
-//        this.orders = orders;
-//    }
-
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_id")
-//    private List<Order> orders = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private List<Order> orders = new ArrayList<>();
 
     public User() {}
 
-    public User(String email, String password, String displayName, String avatar) {
+    public User(String email, String password, String displayName, String avatar, List<Order> orders) {
         this.email = email;
         this.password = password;
         this.displayName = displayName;
         this.avatar = avatar;
+        this.orders = orders;
     }
 
     public void setId(long id) {
@@ -83,9 +81,13 @@ public class User {
         this.avatar = avatar;
     }
 
-//    public List<Order> getOrders() {
-//        return orders;
-//    }
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     @Override
     public String toString() {
