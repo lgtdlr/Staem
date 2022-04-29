@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user", schema = "public")
 public class User {
 
     @Id
@@ -26,19 +26,21 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    @OrderBy("id")
-    private List<Order> orders = new ArrayList<>();
+//    public void setOrders(List<Order> orders) {
+//        this.orders = orders;
+//    }
+
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "user_id")
+//    private List<Order> orders = new ArrayList<>();
 
     public User() {}
 
-    public User(String email, String password, String displayName, String avatar, List<Order> orders) {
+    public User(String email, String password, String displayName, String avatar) {
         this.email = email;
         this.password = password;
         this.displayName = displayName;
         this.avatar = avatar;
-        this.orders = orders;
     }
 
     public void setId(long id) {
@@ -80,6 +82,10 @@ public class User {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
+
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
 
     @Override
     public String toString() {

@@ -3,7 +3,7 @@ package com.lgtdlr.staem.order;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "order")
 public class Order {
 
     @Id
