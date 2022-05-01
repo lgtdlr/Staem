@@ -1,6 +1,6 @@
-package com.lgtdlr.staem.game;
+package com.lgtdlr.staem.order;
 
-import com.lgtdlr.staem.order.Order;
+import com.lgtdlr.staem.game.Game;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -31,10 +31,6 @@ public class OrderGames {
 //    public OrderGamesKey getId() {
 //        return id;
 //    }
-
-    public void setId(OrderGamesKey id) {
-        this.id = id;
-    }
 
     public Game getGame() {
         return game;

@@ -1,6 +1,7 @@
 package com.lgtdlr.staem.user;
 
 import com.lgtdlr.staem.order.Order;
+import com.lgtdlr.staem.order.OrderGames;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,18 +28,26 @@ public class User {
     @Column(name = "avatar")
     private String avatar;
 
+    @OneToMany(mappedBy = "user")
+    private List<UserCart> cart;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private List<Order> orders = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    List<UserGames> games;
+
     public User() {}
 
-    public User(String email, String password, String displayName, String avatar, List<Order> orders) {
+    public User(String email, String password, String displayName, String avatar, List<UserCart> cart, List<Order> orders, List<UserGames> games) {
         this.email = email;
         this.password = password;
         this.displayName = displayName;
         this.avatar = avatar;
+        this.cart = cart;
         this.orders = orders;
+        this.games = games;
     }
 
     public void setId(long id) {
@@ -81,6 +90,14 @@ public class User {
         this.avatar = avatar;
     }
 
+    public List<UserCart> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<UserCart> cart) {
+        this.cart = cart;
+    }
+
     public List<Order> getOrders() {
         return orders;
     }
@@ -88,6 +105,8 @@ public class User {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
+
+    public List<UserGames> getGames() { return games; }
 
     @Override
     public String toString() {

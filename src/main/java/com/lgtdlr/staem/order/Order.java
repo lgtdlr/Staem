@@ -1,7 +1,6 @@
 package com.lgtdlr.staem.order;
 
 import com.lgtdlr.staem.game.Game;
-import com.lgtdlr.staem.game.OrderGames;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,21 +18,21 @@ public class Order {
     @Column(name = "user_id")
     private Integer userId;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "order_games",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "game_id"))
-    private List<Game> games = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinTable(
+//            name = "order_games",
+//            joinColumns = @JoinColumn(name = "order_id"),
+//            inverseJoinColumns = @JoinColumn(name = "game_id"))
+//    private List<Game> games = new ArrayList<>();
 
     @OneToMany(mappedBy = "order")
-    List<OrderGames> orderGames;
+    List<OrderGames> games;
 
     public Order() {}
 
-    public Order(Integer userId, List<OrderGames> orderGames) {
+    public Order(Integer userId, List<OrderGames> games) {
         this.userId = userId;
-        this.orderGames = orderGames;
+        this.games = games;
     }
 
     public Long getId() {
@@ -56,12 +55,12 @@ public class Order {
 //        this.games = games;
 //    }
 
-    public List<OrderGames> getOrderGames() {
-        return orderGames;
+    public List<OrderGames> getGames() {
+        return games;
     }
 
-    public void setOrderGames(List<OrderGames> orderGames) {
-        this.orderGames = orderGames;
+    public void setOrderGames(List<OrderGames> games) {
+        this.games = games;
     }
 
     @Override

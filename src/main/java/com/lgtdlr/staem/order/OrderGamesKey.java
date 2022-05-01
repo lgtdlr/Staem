@@ -1,4 +1,4 @@
-package com.lgtdlr.staem.game;
+package com.lgtdlr.staem.order;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
