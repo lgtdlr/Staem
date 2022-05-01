@@ -25,9 +25,6 @@ public class OrderGames {
     @Column(name = "purchase_price")
     private Double purchasePrice;
 
-    @Column(name = "purchase_date")
-    private LocalDateTime purchaseDate;
-
 //    public OrderGamesKey getId() {
 //        return id;
 //    }
@@ -46,13 +43,5 @@ public class OrderGames {
 
     public void setPurchasePrice(Double purchasePrice) {
         this.purchasePrice = purchasePrice;
-    }
-
-    public LocalDateTime getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
     }
 }

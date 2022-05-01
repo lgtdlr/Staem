@@ -3,6 +3,7 @@ package com.lgtdlr.staem.order;
 import com.lgtdlr.staem.game.Game;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,21 +19,18 @@ public class Order {
     @Column(name = "user_id")
     private Integer userId;
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "order_games",
-//            joinColumns = @JoinColumn(name = "order_id"),
-//            inverseJoinColumns = @JoinColumn(name = "game_id"))
-//    private List<Game> games = new ArrayList<>();
+    @Column(name = "purchase_date")
+    private LocalDateTime purchaseDate;
 
     @OneToMany(mappedBy = "order")
     List<OrderGames> games;
 
     public Order() {}
 
-    public Order(Integer userId, List<OrderGames> games) {
+    public Order(Integer userId, List<OrderGames> games, LocalDateTime purchaseDate) {
         this.userId = userId;
         this.games = games;
+        this.purchaseDate = purchaseDate;
     }
 
     public Long getId() {
@@ -47,13 +45,13 @@ public class Order {
         this.userId = userId;
     }
 
-//    public List<Game> getGames() {
-//        return games;
-//    }
-//
-//    public void setGames(List<Game> games) {
-//        this.games = games;
-//    }
+    public LocalDateTime getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(LocalDateTime purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
 
     public List<OrderGames> getGames() {
         return games;
