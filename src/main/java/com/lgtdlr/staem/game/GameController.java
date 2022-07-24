@@ -1,10 +1,14 @@
 package com.lgtdlr.staem.game;
 
-import com.lgtdlr.staem.user.User;
-import com.lgtdlr.staem.user.UserRepository;
+import com.lgtdlr.staem.covers.CoverService;
+import com.lgtdlr.staem.game.model.Game;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,10 +16,18 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 public class GameController {
 
+
     private final GameRepository gameRepository;
 
-    public GameController(GameRepository gameRepository) {
+    private final GameService gameService;
+
+    private final CoverService coverService;
+
+    @Autowired
+    public GameController(GameRepository gameRepository, GameService gameService, CoverService coverService) {
         this.gameRepository = gameRepository;
+        this.gameService = gameService;
+        this.coverService = coverService;
     }
 
     @InitBinder
@@ -29,13 +41,13 @@ public class GameController {
     }
 
     @GetMapping("/games")
-    public List<Game> getGames() {
+    public List<Game> getAll() {
         return (List<Game>)gameRepository.findAll();
     }
 
-    @PostMapping("/games")
-    void addUser(@RequestBody Game game) {
-        gameRepository.save(game);
+    @PostMapping(value = "/games", consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE })
+    public Game add(@RequestPart("game") Game game, @RequestPart("cover") MultipartFile cover) throws IOException {
+        return this.gameService.add(game, cover);
     }
 
 }

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
+
+.bg-background {
+    background-color: rgb(27, 40, 55);
+}
+
+.bg-primary {
+    background-color: #1b2837;
+}
+
+.text-primary {
+    --tw-text-opacity: 1;
+    color: rgb(33 75 107 / var(--tw-text-opacity));
+  }
+
+.text-text {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}

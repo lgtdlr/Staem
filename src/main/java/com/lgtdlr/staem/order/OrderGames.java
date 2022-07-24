@@ -1,9 +1,8 @@
 package com.lgtdlr.staem.order;
 
-import com.lgtdlr.staem.game.Game;
+import com.lgtdlr.staem.game.model.Game;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "order_games")
@@ -24,10 +23,6 @@ public class OrderGames {
 
     @Column(name = "purchase_price")
     private Double purchasePrice;
-
-//    public OrderGamesKey getId() {
-//        return id;
-//    }
 
     public Game getGame() {
         return game;

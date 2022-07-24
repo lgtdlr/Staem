@@ -1,6 +1,6 @@
 package com.lgtdlr.staem.user;
 
-import com.lgtdlr.staem.game.Game;
+import com.lgtdlr.staem.game.model.Game;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

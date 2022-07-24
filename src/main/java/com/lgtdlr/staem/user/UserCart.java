@@ -1,11 +1,8 @@
 package com.lgtdlr.staem.user;
 
-import com.lgtdlr.staem.game.Game;
-import com.lgtdlr.staem.order.Order;
-import com.lgtdlr.staem.order.OrderGamesKey;
+import com.lgtdlr.staem.game.model.Game;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_cart")

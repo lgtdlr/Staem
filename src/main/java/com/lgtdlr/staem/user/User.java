@@ -2,6 +2,7 @@ package com.lgtdlr.staem.user;
 
 import com.lgtdlr.staem.order.Order;
 import com.lgtdlr.staem.order.OrderGames;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users", schema = "public")
+@Data
 public class User {
 
     @Id
@@ -33,7 +35,7 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
 
     @OneToMany(mappedBy = "user")
     List<UserGames> games;
@@ -48,74 +50,5 @@ public class User {
         this.cart = cart;
         this.orders = orders;
         this.games = games;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public List<UserCart> getCart() {
-        return cart;
-    }
-
-    public void setCart(List<UserCart> cart) {
-        this.cart = cart;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    public List<UserGames> getGames() { return games; }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", displayName='" + displayName + '\'' +
-                ", avatar='" + avatar + '\'' +
-                '}';
     }
 }
