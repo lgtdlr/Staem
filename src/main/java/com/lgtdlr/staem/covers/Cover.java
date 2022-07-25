@@ -2,14 +2,13 @@ package com.lgtdlr.staem.covers;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.lgtdlr.staem.game.model.Game;
+import com.lgtdlr.staem.game.Game;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Entity(name = "covers")
-@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="@id")
-@Data
+@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class)
 public class Cover {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,5 +29,54 @@ public class Cover {
 
     @OneToOne(mappedBy = "cover")
     private Game game;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public byte[] getBlob() {
+        return blob;
+    }
+
+    public void setBlob(byte[] blob) {
+        this.blob = blob;
+    }
+
+    public Long getContentLength() {
+        return contentLength;
+    }
+
+    public void setContentLength(Long contentLength) {
+        this.contentLength = contentLength;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
 
 }

@@ -1,7 +1,5 @@
 package com.lgtdlr.staem.game;
 
-import com.lgtdlr.staem.covers.CoverService;
-import com.lgtdlr.staem.game.model.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.WebDataBinder;
@@ -21,13 +19,11 @@ public class GameController {
 
     private final GameService gameService;
 
-    private final CoverService coverService;
 
     @Autowired
-    public GameController(GameRepository gameRepository, GameService gameService, CoverService coverService) {
+    public GameController(GameRepository gameRepository, GameService gameService) {
         this.gameRepository = gameRepository;
         this.gameService = gameService;
-        this.coverService = coverService;
     }
 
     @InitBinder

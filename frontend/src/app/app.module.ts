@@ -11,6 +11,7 @@ import { GameItemComponent } from './game-item/game-item.component';
 import { HeaderComponent } from './header/header.component';
 import { ListingHeaderComponent } from './listing/listing-header/listing-header.component';
 import { ButtonComponent } from './button/button.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ButtonComponent } from './button/button.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     SwiperModule,
     AppRoutingModule
   ],

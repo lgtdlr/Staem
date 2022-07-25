@@ -1,6 +1,5 @@
 package com.lgtdlr.staem.game;
 
-import com.lgtdlr.staem.game.model.Game;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -1,8 +1,6 @@
 package com.lgtdlr.staem.game;
 
 import com.lgtdlr.staem.covers.Cover;
-import com.lgtdlr.staem.covers.CoverService;
-import com.lgtdlr.staem.game.model.Game;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,13 +11,10 @@ import java.util.Optional;
 @Service
 public class GameService {
 
-    private final CoverService coverService;
-
     private final GameRepository gameRepository;
 
     @Autowired
-    public GameService(CoverService coverService, GameRepository gameRepository) {
-        this.coverService = coverService;
+    public GameService(GameRepository gameRepository) {
         this.gameRepository = gameRepository;
     }
 

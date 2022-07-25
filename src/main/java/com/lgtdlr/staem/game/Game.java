@@ -1,4 +1,4 @@
-package com.lgtdlr.staem.game.model;
+package com.lgtdlr.staem.game;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -11,9 +11,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "games")
-@Data
-@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class, property="@id")
-
+@JsonIdentityInfo(generator= ObjectIdGenerators.UUIDGenerator.class)
 public class Game {
 
     @Id
@@ -37,14 +35,52 @@ public class Game {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cover_id", referencedColumnName = "id")
     private Cover cover;
-//    @OneToMany(mappedBy = "order")
-//    private List<OrderGames> orderGames;
 
-//    public List<OrderGames> getOrderGames() {
-//        return orderGames;
-//    }
-//
-//    public void setOrderGames(List<OrderGames> orderGames) {
-//        this.orderGames = orderGames;
-//    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public LocalDateTime getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDateTime releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Cover getCover() {
+        return cover;
+    }
+
+    public void setCover(Cover cover) {
+        this.cover = cover;
+    }
 }

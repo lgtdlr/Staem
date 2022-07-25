@@ -1,6 +1,6 @@
 package com.lgtdlr.staem.order;
 
-import com.lgtdlr.staem.game.model.Game;
+import com.lgtdlr.staem.game.Game;
 
 import javax.persistence.*;
 

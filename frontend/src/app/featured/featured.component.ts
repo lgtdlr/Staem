@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SwiperComponent } from "swiper/angular";
 
 // import Swiper core and required components
 import SwiperCore , {
@@ -14,6 +13,8 @@ import SwiperCore , {
   Thumbs,
   Controller,
 } from 'swiper';
+import { GameService } from '../core/game.service';
+import { Game } from '../common/models/Game';
 
 // install Swiper components
 SwiperCore.use([
@@ -36,17 +37,26 @@ SwiperCore.use([
 })
 export class FeaturedComponent implements OnInit {
 
-  constructor() { }
+  games: Game[] = [];
 
-  ngOnInit(): void {
+  constructor(private gameService : GameService) {
+   }
+
+  getGames(): void {
+    this.gameService.getGames().subscribe(
+      games => {
+        this.games = games;
+
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
+  ngOnInit(): void {
+    this.getGames();
 
-  pagination = {
-    clickable: true,
-    renderBullet: function (index: number, className: string) {
-      return '<span class="' + className + '">' + (index + 1) + "</span>";
-    },
-  };
+  }
 
 }
